@@ -49,6 +49,7 @@ import org.eclipse.sisu.wire.ParameterKeys;
 import org.eclipse.sisu.wire.WireModule;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.Constants;
 import org.osgi.framework.wiring.BundleRevision;
 import org.osgi.framework.wiring.BundleWire;
 import org.osgi.framework.wiring.BundleWiring;
@@ -138,7 +139,9 @@ public class NexusBundleTracker
   }
 
   private static boolean isNexusPlugin(final Bundle bundle) {
-    return bundle.getResource("META-INF/nexus/plugin.xml") != null;
+    // TODO: check imports, for when plugins eventually move away from Require-Bundle?
+    final String requiredBundles = bundle.getHeaders().get(Constants.REQUIRE_BUNDLE);
+    return null != requiredBundles && (requiredBundles.contains("org.sonatype.nexus.plugin-api"));
   }
 
   private void prepareRequiredNexusPlugins(final Bundle bundle) {
