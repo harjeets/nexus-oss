@@ -28,11 +28,6 @@
   <name>${project.groupId}:${project.artifactId}</name>
   <packaging>bundle</packaging>
 
-  <properties>
-    <pluginName>Nexus Remote Repository Browsing Plugin</pluginName>
-    <pluginDescription>Adds support for browsing proxy repositories remote storage.</pluginDescription>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.sonatype.nexus</groupId>
@@ -64,6 +59,18 @@
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>yuicompressor-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <configuration>
+          <instructions>
+            <Bundle-Name>Nexus Remote Repository Browsing Plugin</Bundle-Name>
+            <Bundle-Description>Adds support for browsing proxy repositories remote storage.</Bundle-Description>
+            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+          </instructions>
+        </configuration>
       </plugin>
     </plugins>
   </build>

@@ -44,6 +44,17 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <configuration>
+          <instructions>
+            <Bundle-Name>Nexus Capabilities Test Helper Plugin</Bundle-Name>
+            <Bundle-Description>This plugin adds resources for capabilities testing.</Bundle-Description>
+            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+          </instructions>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 

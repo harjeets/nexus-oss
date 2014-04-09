@@ -29,9 +29,6 @@
   <packaging>bundle</packaging>
 
   <properties>
-    <pluginName>Nexus Capabilities Plugin</pluginName>
-    <pluginDescription>Allows Nexus to define and manage capabilities.</pluginDescription>
-
     <debug-js>false</debug-js>
   </properties>
 
@@ -105,6 +102,7 @@
           <compilerId>groovy-eclipse-compiler</compilerId>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>org.codehaus.modello</groupId>
         <artifactId>modello-maven-plugin</artifactId>
@@ -128,9 +126,22 @@
           </execution>
         </executions>
       </plugin>
+
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>yuicompressor-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <configuration>
+          <instructions>
+            <Bundle-Name>Nexus Capabilities Plugin</Bundle-Name>
+            <Bundle-Description>Allows Nexus to define and manage capabilities.</Bundle-Description>
+            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+          </instructions>
+        </configuration>
       </plugin>
     </plugins>
   </build>

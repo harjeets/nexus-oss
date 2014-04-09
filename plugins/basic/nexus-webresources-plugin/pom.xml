@@ -27,11 +27,6 @@
   <name>${project.groupId}:${project.artifactId}</name>
   <packaging>bundle</packaging>
 
-  <properties>
-    <pluginName>Nexus Web Resources Plugin</pluginName>
-    <pluginDescription>Provides support for serving web resources.</pluginDescription>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.sonatype.nexus</groupId>
@@ -48,6 +43,17 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <configuration>
+          <instructions>
+            <Bundle-Name>Nexus Web Resources Plugin</Bundle-Name>
+            <Bundle-Description>Provides support for serving web resources.</Bundle-Description>
+            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+          </instructions>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 

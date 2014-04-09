@@ -27,11 +27,6 @@
   <name>${project.groupId}:${project.artifactId}</name>
   <packaging>bundle</packaging>
 
-  <properties>
-    <pluginName>Nexus Plugin Console Plugin</pluginName>
-    <pluginDescription>Adds a UI to view installed plugins.</pluginDescription>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.sonatype.nexus</groupId>
@@ -89,6 +84,18 @@
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>yuicompressor-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <configuration>
+          <instructions>
+            <Bundle-Name>Nexus Plugin Console Plugin</Bundle-Name>
+            <Bundle-Description>Adds a UI to view installed plugins.</Bundle-Description>
+            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+          </instructions>
+        </configuration>
       </plugin>
     </plugins>
   </build>
