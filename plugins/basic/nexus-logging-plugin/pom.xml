@@ -26,8 +26,7 @@
 
   <artifactId>nexus-logging-plugin</artifactId>
   <name>${project.groupId}:${project.artifactId}</name>
-
-  <packaging>nexus-plugin</packaging>
+  <packaging>bundle</packaging>
 
   <properties>
     <pluginName>Nexus Logging Plugin</pluginName>
@@ -44,31 +43,24 @@
     <dependency>
       <groupId>org.sonatype.nexus.plugins</groupId>
       <artifactId>nexus-siesta-plugin</artifactId>
-      <type>${nexus-plugin.type}</type>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.sonatype.nexus.plugins</groupId>
       <artifactId>nexus-ui-extjs3-plugin</artifactId>
-      <type>${nexus-plugin.type}</type>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.sonatype.nexus.plugins</groupId>
       <artifactId>nexus-extdirect-plugin</artifactId>
-      <type>${nexus-plugin.type}</type>
       <scope>provided</scope>
     </dependency>
   </dependencies>
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.sonatype.nexus</groupId>
-        <artifactId>nexus-plugin-bundle-maven-plugin</artifactId>
-      </plugin>
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>yuicompressor-maven-plugin</artifactId>
