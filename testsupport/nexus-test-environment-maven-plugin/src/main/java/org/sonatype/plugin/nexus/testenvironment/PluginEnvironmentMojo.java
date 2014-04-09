@@ -52,7 +52,7 @@ public class PluginEnvironmentMojo
         String classifier =
             project.getArtifact().getClassifier() == null ? "" : "-"
                 + project.getArtifact().getClassifier();
-        Bundle bundle =
+        File bundle =
             new File(project.getBuild().getDirectory(), project.getBuild().getFinalName() + classifier
                 + "." + project.getArtifact().getType());
 
