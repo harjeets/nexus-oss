@@ -38,7 +38,7 @@ def ant = new AntBuilder()
 
 // strip off .jar
 assert pluginFile.name.endsWith('.jar')
-def pluginPrefix = pluginFile.name[0..-5]
+def pluginPrefix = pluginFile.name.replaceAll(/\.jar$/, '-jar')
 
 // delete the plugin dir, if it exists
 def pluginDir = new File(repoDir, pluginPrefix)

@@ -116,11 +116,6 @@
     -->
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
-
-    <!--
-    Directory containing generated sisu metadata.
-    -->
-    <sisu.meta>${project.build.outputDirectory}/META-INF/sisu</sisu.meta>
   </properties>
 
   <modules>
@@ -540,7 +535,7 @@
               <_nouses>true</_nouses>
               <_nodefaultversion>true</_nodefaultversion>
               <Include-Resource>
-                {maven-resources},$(if;$(dir;${sisu.meta});META-INF/sisu=${sisu.meta})
+                /=${project.build.outputDirectory}
               </Include-Resource>
               <_removeheaders>
                 Embed*,Include-Resource,Private-Package
