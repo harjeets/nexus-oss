@@ -89,7 +89,7 @@
             </Embed-Dependency>
             <Embed-Directory>lib</Embed-Directory>
             <_exportcontents>
-              !lib.*,*;-noimport:=true
+              !lib.*,groovyx.*|org.*;-noimport:=true
             </_exportcontents>
             <Require-Bundle>
               org.sonatype.nexus.plugin-api,

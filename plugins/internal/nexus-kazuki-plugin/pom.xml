@@ -112,7 +112,7 @@
             <Embed-Transitive>true</Embed-Transitive>
             <Embed-Directory>lib</Embed-Directory>
             <_exportcontents>
-              !lib.*,*;-noimport:=true
+              !lib.*,antlr.*|com.*|io.*|org.*;-noimport:=true
             </_exportcontents>
             <Require-Bundle>
               org.sonatype.nexus.plugin-api,

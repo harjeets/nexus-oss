@@ -90,7 +90,7 @@
             <Embed-Transitive>true</Embed-Transitive>
             <Embed-Directory>lib</Embed-Directory>
             <_exportcontents>
-              !lib.*,*;-noimport:=true
+              !lib.*,com.*|javax.*|org.*|templates;-noimport:=true
             </_exportcontents>
             <Require-Bundle>
               org.sonatype.nexus.plugin-api,

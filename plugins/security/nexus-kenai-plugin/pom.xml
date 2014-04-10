@@ -90,7 +90,7 @@
             </Embed-Dependency>
             <Embed-Directory>lib</Embed-Directory>
             <_exportcontents>
-              !lib.*,*;-noimport:=true
+              !lib.*,org.*;-noimport:=true
             </_exportcontents>
             <Require-Bundle>
               org.sonatype.nexus.plugin-api

@@ -148,7 +148,7 @@
             <Embed-Transitive>true</Embed-Transitive>
             <Embed-Directory>lib</Embed-Directory>
             <_exportcontents>
-              !lib.*,*;-noimport:=true
+              !lib.*,org.*;-noimport:=true
             </_exportcontents>
             <Include-Resource>
               /=${project.build.outputDirectory},

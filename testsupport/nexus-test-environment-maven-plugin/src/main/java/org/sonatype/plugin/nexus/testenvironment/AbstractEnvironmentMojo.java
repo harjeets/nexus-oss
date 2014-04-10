@@ -817,7 +817,18 @@ public class AbstractEnvironmentMojo
 
       String type = pluginArtifact.getType();
 
-      if ("jar".equals(type)) {
+      if (dest.equals(pluginsFolder)) {
+        File file = pluginArtifact.getFile();
+        if (file == null || !file.isFile()) {
+          throw new MojoFailureException("Could not properly resolve artifact " + pluginArtifact + ", got "
+              + file);
+        }
+        final String pluginKey = pluginArtifact.getGroupId() + ":" + pluginArtifact.getArtifactId();
+        if (!useBundlePluginsIfPresent || !bundlePlugins.containsKey(pluginKey)) {
+          unpack(file, new File(dest, pluginArtifact.getArtifactId() + '-' + pluginArtifact.getVersion()), type);
+        }
+      }
+      else if ("jar".equals(type)) {
         // System.out.println( "copying jar: "+ pluginArtifact.getFile().getAbsolutePath() + " to: "+
         // dest.getAbsolutePath() );
         copy(pluginArtifact.getFile(), dest);
