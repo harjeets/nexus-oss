@@ -107,8 +107,9 @@
             <Bundle-Name>Nexus Kazuki Plugin</Bundle-Name>
             <Bundle-Description>Kazuki datastore provider.</Bundle-Description>
             <Embed-Dependency>
-              *;scope=compile
+              *;scope=compile;artifactId=!jackson-annotations|jackson-core|jackson-databind|jsr305
             </Embed-Dependency>
+            <Embed-Transitive>true</Embed-Transitive>
             <Embed-Directory>lib</Embed-Directory>
             <_exportcontents>
               !lib.*,*;-noimport:=true

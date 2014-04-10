@@ -75,8 +75,9 @@
               Adds an API to access maven dependency resolution for Nexus plugins.
             </Bundle-Description>
             <Embed-Dependency>
-              *;scope=compile
+              *;scope=compile;artifactId=*maven*[^al]|*wagon*|plexus-sec*
             </Embed-Dependency>
+            <Embed-Transitive>true</Embed-Transitive>
             <Embed-Directory>lib</Embed-Directory>
             <_exportcontents>
               !lib.*,*;-noimport:=true

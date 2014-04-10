@@ -535,7 +535,7 @@
               <_nouses>true</_nouses>
               <_nodefaultversion>true</_nodefaultversion>
               <Include-Resource>
-                /=${project.build.outputDirectory}
+                /=${project.build.outputDirectory},{maven-resources}
               </Include-Resource>
               <_removeheaders>
                 Embed*,Include-Resource,Private-Package

@@ -88,33 +88,22 @@
               <artifactItems>
                 <artifactItem>
                   <groupId>org.sonatype.p2.bridge</groupId>
+                  <artifactId>p2-runtime</artifactId>
+                  <type>zip</type>
+                  <outputDirectory>${project.build.outputDirectory}/p2-runtime</outputDirectory>
+                  <destFileName>eclipse.zip</destFileName>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.sonatype.p2.bridge</groupId>
                   <artifactId>org.sonatype.p2.bridge.impl</artifactId>
-                  <outputDirectory>${project.build.directory}/dependency/bundles</outputDirectory>
+                  <outputDirectory>${project.build.outputDirectory}/p2-runtime/bundles</outputDirectory>
                 </artifactItem>
                 <artifactItem>
                   <groupId>org.eclipse.tycho</groupId>
                   <artifactId>org.eclipse.tycho.noopsecurity</artifactId>
-                  <outputDirectory>${project.build.directory}/dependency/bundles</outputDirectory>
+                  <outputDirectory>${project.build.outputDirectory}/p2-runtime/bundles</outputDirectory>
                 </artifactItem>
               </artifactItems>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>copy-strip-version</id>
-            <goals>
-              <goal>copy</goal>
-            </goals>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>org.sonatype.p2.bridge</groupId>
-                  <artifactId>p2-runtime</artifactId>
-                  <type>zip</type>
-                  <outputDirectory>${project.build.directory}/dependency</outputDirectory>
-                </artifactItem>
-              </artifactItems>
-              <stripVersion>true</stripVersion>
             </configuration>
           </execution>
         </executions>
@@ -154,12 +143,21 @@
             <Bundle-Name>Nexus P2 Bridge Plugin</Bundle-Name>
             <Bundle-Description>Bridge between Nexus and P2 Eclipse Runtime.</Bundle-Description>
             <Embed-Dependency>
-              *;scope=compile
+              *;scope=compile;artifactId=!plexus-utils
             </Embed-Dependency>
+            <Embed-Transitive>true</Embed-Transitive>
             <Embed-Directory>lib</Embed-Directory>
             <_exportcontents>
               !lib.*,*;-noimport:=true
             </_exportcontents>
+            <Include-Resource>
+              /=${project.build.outputDirectory},
+              /p2-runtime/bridge/org.sonatype.p2.bridge.api.manifest
+                =${project.build.directory}/dependency/org.sonatype.p2.bridge.api/META-INF/MANIFEST.MF,
+              /p2-runtime/bridge/org.sonatype.p2.bridge.model.manifest
+                =${project.build.directory}/dependency/org.sonatype.p2.bridge.model/META-INF/MANIFEST.MF,
+              {maven-resources}
+            </Include-Resource>
             <Require-Bundle>
               org.sonatype.nexus.plugin-api
             </Require-Bundle>

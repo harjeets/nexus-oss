@@ -107,8 +107,9 @@
             <Bundle-Name>Nexus Siesta Plugin</Bundle-Name>
             <Bundle-Description>Support for Siesta (Jersey) REST API.</Bundle-Description>
             <Embed-Dependency>
-              *;scope=compile
+              *;scope=compile;artifactId=!aop*|jsr305|javax.inject|guava|sisu-guice|jackson-[cad]*|*eclipse*|slf4j*|v*
             </Embed-Dependency>
+            <Embed-Transitive>true</Embed-Transitive>
             <Embed-Directory>lib</Embed-Directory>
             <_exportcontents>
               !lib.*,*;-noimport:=true

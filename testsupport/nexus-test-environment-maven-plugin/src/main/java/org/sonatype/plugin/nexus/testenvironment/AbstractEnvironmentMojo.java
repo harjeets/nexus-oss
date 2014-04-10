@@ -808,6 +808,9 @@ public class AbstractEnvironmentMojo
       else if ("bundle".equals(pluginArtifact.getClassifier()) && "zip".equals(pluginArtifact.getType())) {
         dest = pluginsFolder;
       }
+      else if (pluginArtifact.getArtifactId().endsWith("-plugin")) {
+        dest = pluginsFolder;
+      }
       else {
         dest = libsFolder;
       }

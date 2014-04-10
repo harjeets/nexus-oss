@@ -77,6 +77,7 @@
             <Embed-Dependency>
               *;scope=compile
             </Embed-Dependency>
+            <Embed-Transitive>true</Embed-Transitive>
             <Embed-Directory>lib</Embed-Directory>
             <_exportcontents>
               !lib.*,*;-noimport:=true

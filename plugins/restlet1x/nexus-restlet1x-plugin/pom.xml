@@ -85,8 +85,9 @@
             <Bundle-Name>Nexus Core API (Restlet 1.x Plugin)</Bundle-Name>
             <Bundle-Description>Provides Nexus Core REST API.</Bundle-Description>
             <Embed-Dependency>
-              *;scope=compile
+              *;scope=compile;artifactId=*restlet*|enunciate-core|org.json|javax.ws.rs
             </Embed-Dependency>
+            <Embed-Transitive>true</Embed-Transitive>
             <Embed-Directory>lib</Embed-Directory>
             <_exportcontents>
               !lib.*,*;-noimport:=true
