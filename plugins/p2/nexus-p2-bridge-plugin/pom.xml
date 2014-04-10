@@ -153,7 +153,16 @@
           <instructions>
             <Bundle-Name>Nexus P2 Bridge Plugin</Bundle-Name>
             <Bundle-Description>Bridge between Nexus and P2 Eclipse Runtime.</Bundle-Description>
-            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+            <Embed-Dependency>
+              *;scope=compile
+            </Embed-Dependency>
+            <Embed-Directory>lib</Embed-Directory>
+            <_exportcontents>
+              !lib.*,*;-noimport:=true
+            </_exportcontents>
+            <Require-Bundle>
+              org.sonatype.nexus.plugin-api
+            </Require-Bundle>
           </instructions>
         </configuration>
       </plugin>

@@ -84,7 +84,17 @@
           <instructions>
             <Bundle-Name>Nexus Core API (Restlet 1.x Plugin)</Bundle-Name>
             <Bundle-Description>Provides Nexus Core REST API.</Bundle-Description>
-            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+            <Embed-Dependency>
+              *;scope=compile
+            </Embed-Dependency>
+            <Embed-Directory>lib</Embed-Directory>
+            <_exportcontents>
+              !lib.*,*;-noimport:=true
+            </_exportcontents>
+            <Require-Bundle>
+              org.sonatype.nexus.plugin-api,
+              org.sonatype.nexus.plugins.nexus-content-plugin
+            </Require-Bundle>
           </instructions>
         </configuration>
       </plugin>

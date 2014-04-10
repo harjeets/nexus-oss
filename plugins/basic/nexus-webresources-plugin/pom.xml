@@ -50,7 +50,9 @@
           <instructions>
             <Bundle-Name>Nexus Web Resources Plugin</Bundle-Name>
             <Bundle-Description>Provides support for serving web resources.</Bundle-Description>
-            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+            <Require-Bundle>
+              org.sonatype.nexus.plugin-api
+            </Require-Bundle>
           </instructions>
         </configuration>
       </plugin>

@@ -89,7 +89,12 @@
           <instructions>
             <Bundle-Name>Nexus Logging Plugin</Bundle-Name>
             <Bundle-Description>Allows users to control Nexus logging.</Bundle-Description>
-            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+            <Require-Bundle>
+              org.sonatype.nexus.plugin-api,
+              org.sonatype.nexus.plugins.nexus-extdirect-plugin,
+              org.sonatype.nexus.plugins.nexus-siesta-plugin,
+              org.sonatype.nexus.plugins.nexus-ui-extjs3-plugin
+            </Require-Bundle>
           </instructions>
         </configuration>
       </plugin>

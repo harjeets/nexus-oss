@@ -61,7 +61,10 @@
           <instructions>
             <Bundle-Name>Nexus Site Repository Plugin</Bundle-Name>
             <Bundle-Description>Adds a repository type for deploying web sites.</Bundle-Description>
-            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+            <Require-Bundle>
+              org.sonatype.nexus.plugin-api,
+              org.sonatype.nexus.plugins.nexus-ui-extjs3-plugin
+            </Require-Bundle>
           </instructions>
         </configuration>
       </plugin>

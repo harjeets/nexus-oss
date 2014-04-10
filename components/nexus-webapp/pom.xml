@@ -320,6 +320,7 @@
               <includeGroupIds>org.sonatype.nexus.plugins</includeGroupIds>
               <outputDirectory>${project.build.directory}/plugin-repository</outputDirectory>
               <useSubDirectoryPerArtifact>true</useSubDirectoryPerArtifact>
+              <excludeTransitive>true</excludeTransitive>
             </configuration>
           </execution>
         </executions>

@@ -94,7 +94,15 @@
           <instructions>
             <Bundle-Name>Nexus (Rapture) Core UI Plugin</Bundle-Name>
             <Bundle-Description>Provides a Nexus user interface based on Rapture.</Bundle-Description>
-            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+            <Require-Bundle>
+              org.sonatype.nexus.plugin-api,
+              org.sonatype.nexus.plugins.nexus-extdirect-plugin,
+              org.sonatype.nexus.plugins.nexus-restlet1x-plugin,
+              org.sonatype.nexus.plugins.nexus-groovy-plugin,
+              org.sonatype.nexus.plugins.nexus-wonderland-plugin,
+              org.sonatype.nexus.plugins.nexus-rapture-plugin,
+              org.sonatype.nexus.plugins.nexus-indexer-lucene-plugin
+            </Require-Bundle>
           </instructions>
         </configuration>
       </plugin>

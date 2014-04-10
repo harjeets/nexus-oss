@@ -58,7 +58,11 @@
           <instructions>
             <Bundle-Name>Nexus UI Test Helper Plugin</Bundle-Name>
             <Bundle-Description>This plugin adds resources for UI testing.</Bundle-Description>
-            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+            <Require-Bundle>
+              org.sonatype.nexus.plugin-api,
+              org.sonatype.nexus.plugins.nexus-rapture-plugin,
+              org.sonatype.nexus.plugins.nexus-ui-extjs3-plugin
+            </Require-Bundle>
           </instructions>
         </configuration>
       </plugin>

@@ -176,7 +176,7 @@ class P2Runtime
       initParams.put("osgi.debug", new File(eclipseDir, ".options").getAbsolutePath());
     }
     initParams.put(EclipseInstance.TEMPDIR_PROPERTY, p2BridgeAgentsTempDir.getAbsolutePath());
-    initParams.put("osgi.framework", findEclipseFramework(new File(p2BridgePluginDir, "dependencies")));
+    initParams.put("osgi.framework", findEclipseFramework(new File(p2BridgePluginDir, "lib")));
     initParams.put("eclipse.enableStateSaver", "false");
     return initParams;
   }

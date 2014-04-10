@@ -57,7 +57,10 @@
           <instructions>
             <Bundle-Name>Nexus RutAuth Plugin</Bundle-Name>
             <Bundle-Description>A HTTP header based (REMOTE_USER) realm.</Bundle-Description>
-            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+            <Require-Bundle>
+              org.sonatype.nexus.plugin-api,
+              org.sonatype.nexus.plugins.nexus-capabilities-plugin
+            </Require-Bundle>
           </instructions>
         </configuration>
       </plugin>

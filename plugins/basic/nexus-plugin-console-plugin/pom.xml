@@ -93,7 +93,12 @@
           <instructions>
             <Bundle-Name>Nexus Plugin Console Plugin</Bundle-Name>
             <Bundle-Description>Adds a UI to view installed plugins.</Bundle-Description>
-            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+            <Require-Bundle>
+              org.sonatype.nexus.plugin-api,
+              org.sonatype.nexus.plugins.nexus-extdirect-plugin,
+              org.sonatype.nexus.plugins.nexus-restlet1x-plugin,
+              org.sonatype.nexus.plugins.nexus-ui-extjs3-plugin
+            </Require-Bundle>
           </instructions>
         </configuration>
       </plugin>

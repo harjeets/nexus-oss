@@ -89,7 +89,17 @@
           <instructions>
             <Bundle-Name>Nexus Groovy Remote Plugin</Bundle-Name>
             <Bundle-Description>Provides scriptable remote control.</Bundle-Description>
-            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+            <Embed-Dependency>
+              *;scope=compile
+            </Embed-Dependency>
+            <Embed-Directory>lib</Embed-Directory>
+            <_exportcontents>
+              !lib.*,*;-noimport:=true
+            </_exportcontents>
+            <Require-Bundle>
+              org.sonatype.nexus.plugin-api,
+              org.sonatype.nexus.plugins.nexus-groovy-plugin
+            </Require-Bundle>
           </instructions>
         </configuration>
       </plugin>

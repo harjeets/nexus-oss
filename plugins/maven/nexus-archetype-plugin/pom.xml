@@ -68,7 +68,18 @@
           <instructions>
             <Bundle-Name>Nexus Maven Archetype Catalog Plugin</Bundle-Name>
             <Bundle-Description>Adds a content generator for Maven archetype.xml files.</Bundle-Description>
-            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+            <Embed-Dependency>
+              *;scope=compile
+            </Embed-Dependency>
+            <Embed-Directory>lib</Embed-Directory>
+            <_exportcontents>
+              !lib.*,*;-noimport:=true
+            </_exportcontents>
+            <Require-Bundle>
+              org.sonatype.nexus.plugin-api,
+              org.sonatype.nexus.plugins.nexus-restlet1x-plugin,
+              org.sonatype.nexus.plugins.nexus-indexer-lucene-plugin
+            </Require-Bundle>
           </instructions>
         </configuration>
       </plugin>

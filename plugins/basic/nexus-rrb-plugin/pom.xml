@@ -68,7 +68,11 @@
           <instructions>
             <Bundle-Name>Nexus Remote Repository Browsing Plugin</Bundle-Name>
             <Bundle-Description>Adds support for browsing proxy repositories remote storage.</Bundle-Description>
-            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+            <Require-Bundle>
+              org.sonatype.nexus.plugin-api,
+              org.sonatype.nexus.plugins.nexus-restlet1x-plugin,
+              org.sonatype.nexus.plugins.nexus-ui-extjs3-plugin
+            </Require-Bundle>
           </instructions>
         </configuration>
       </plugin>

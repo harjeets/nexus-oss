@@ -56,7 +56,10 @@
           <instructions>
             <Bundle-Name>Nexus Unpack Plugin</Bundle-Name>
             <Bundle-Description>Automatically unpack deployed bundles.</Bundle-Description>
-            <Require-Bundle>org.sonatype.nexus.plugin-api</Require-Bundle>
+            <Require-Bundle>
+              org.sonatype.nexus.plugin-api,
+              org.sonatype.nexus.plugins.nexus-restlet1x-plugin
+            </Require-Bundle>
           </instructions>
         </configuration>
       </plugin>
