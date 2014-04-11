@@ -48,6 +48,11 @@
     </dependency>
 
     <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.core</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>org.apache.felix</groupId>
       <artifactId>org.osgi.service.obr</artifactId>
     </dependency>
@@ -115,7 +120,7 @@
             <Bundle-Name>Nexus OBR Plugin</Bundle-Name>
             <Bundle-Description>Adds a repository type for OBR repositories.</Bundle-Description>
             <Embed-Dependency>
-              *;scope=compile
+              *;scope=compile;artifactId=!org.osgi.core
             </Embed-Dependency>
             <Embed-Directory>lib</Embed-Directory>
             <_exportcontents>
