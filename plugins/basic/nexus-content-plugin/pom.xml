@@ -56,6 +56,11 @@
           </instructions>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.karaf.tooling</groupId>
+        <artifactId>karaf-maven-plugin</artifactId>
+      </plugin>
     </plugins>
   </build>
 
