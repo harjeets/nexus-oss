@@ -47,6 +47,7 @@
     <module>nexus-security</module>
     <module>nexus-security-realms</module>
     <module>nexus-webapp</module>
+    <module>nexus-blob-store</module>
   </modules>
 
   <dependencyManagement>
