@@ -71,14 +71,12 @@
     <dependency>
       <groupId>org.sonatype.nexus.plugins</groupId>
       <artifactId>nexus-groovy-plugin</artifactId>
-      <type>${nexus-plugin.type}</type>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.sonatype.nexus.plugins</groupId>
       <artifactId>nexus-extdirect-plugin</artifactId>
-      <type>${nexus-plugin.type}</type>
       <scope>provided</scope>
     </dependency>
 
@@ -124,7 +122,9 @@
               org.sonatype.nexus.plugin-api,
               org.sonatype.nexus.plugins.nexus-kazuki-plugin,
               org.sonatype.nexus.plugins.nexus-siesta-plugin,
-              org.sonatype.nexus.plugins.nexus-ui-extjs3-plugin
+              org.sonatype.nexus.plugins.nexus-ui-extjs3-plugin,
+              org.sonatype.nexus.plugins.nexus-groovy-plugin,
+              org.sonatype.nexus.plugins.nexus-extdirect-plugin
             </Require-Bundle>
           </instructions>
         </configuration>
