@@ -12,23 +12,27 @@
  */
 package org.sonatype.nexus.blobstore.api;
 
+import java.io.InputStream;
+import java.util.Map;
+
 /**
+ * A wrapper for binary data stored within a {@link BlobStore}.
+ *
  * @since 3.0
  */
-public interface BlobStoreMetrics
+public interface Blob
 {
-  long getBlobCount();
+  BlobId getId();
 
   /**
-   * The total storage space consumed by this blob store, including blobs, headers, and any other metadata required by
-   * the store.
+   * An immutable map of the headers that were provided when the blob was created.
    */
-  long getTotalSizeInBytes();
+  Map<String, String> getHeaders() throws BlobStoreException;
 
   /**
-   * An estimate of the remaining space available in the blob store. For certain blob stores like S3, this may return a
-   * value set by a policy rather than some hard storage limit.
+   * An input stream to the blob's content.
    */
-  long getAvailableSpaceInBytes();
+  InputStream getInputStream() throws BlobStoreException;
 
+  BlobMetrics getMetrics() throws BlobStoreException;
 }

@@ -15,7 +15,7 @@ package org.sonatype.nexus.blobstore.api;
 /**
  * @since 3.0
  */
-public class BlobStoreException extends Exception
+public class BlobStoreException extends RuntimeException
 {
   public BlobStoreException(final String message) {
     super(message);

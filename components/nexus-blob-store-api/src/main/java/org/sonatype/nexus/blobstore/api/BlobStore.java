@@ -15,6 +15,8 @@ package org.sonatype.nexus.blobstore.api;
 import java.io.InputStream;
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
 /**
  * <p>A generic storage bin for binary objects of all sizes.</p>
  *
@@ -41,11 +43,9 @@ public interface BlobStore
    * @throws BlobStoreException (or a subclass) if the input stream can't be read correctly, if mandatory headers are
    *                            missing,
    */
-  Blob create(InputStream inputStream, Map<String, String> header) throws BlobStoreException;
+  Blob create(InputStream inputStream, Map<String, String> headers) throws BlobStoreException;
 
-  /**
-   * @return <code>null</code> if there is no blob at that id.  (Consider, this is a weird thing to happen.)
-   */
+  @Nullable
   Blob get(BlobId blobId) throws BlobStoreException;
 
   /**

@@ -23,12 +23,48 @@
     <version>3.0.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>nexus-blob-store</artifactId>
+  <artifactId>nexus-blob-store-file</artifactId>
   <name>${project.groupId}:${project.artifactId}</name>
-  <packaging>pom</packaging>
 
-  <modules>
-    <module>nexus-blob-store-api</module>
-  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>org.sonatype.nexus</groupId>
+      <artifactId>nexus-blob-store-api</artifactId>
+      <version>3.0.0-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>org.sonatype.nexus</groupId>
+      <artifactId>nexus-test-common</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <!--
+      TODO: This is purely for the DigesterUtils class, which apparently will be pulled out at some point.
+      c.f. https://issues.sonatype.org/browse/NEXUS-6535
+    -->
+    <dependency>
+      <groupId>org.sonatype.nexus</groupId>
+      <artifactId>nexus-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>org.json</artifactId>
+    </dependency>
+  </dependencies>
+
 
 </project>

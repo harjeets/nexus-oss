@@ -12,27 +12,44 @@
  */
 package org.sonatype.nexus.blobstore.api;
 
-import java.io.InputStream;
-import java.util.Map;
+import javax.annotation.Nonnull;
 
-/**
- * A wrapper for binary data stored within a {@link BlobStore}.
- *
- * @since 3.0
- */
-public interface Blob
+import com.google.common.base.Preconditions;
+
+public final class BlobId
 {
-  BlobId getId();
+  private String id;
 
-  /**
-   * An immutable map of the headers that were provided when the blob was created.
-   */
-  Map<String,String> getHeaders();
+  public BlobId(@Nonnull final String id) {
+    Preconditions.checkNotNull(id);
+    this.id = id;
+  }
 
-  /**
-   * An input stream to the blob's bytes.
-   */
-  InputStream getInputStream() throws BlobStoreException;
+  @Override
+  public String toString() {
+    return id;
+  }
 
-  BlobMetrics getMetrics() throws BlobStoreException;
+  @Override
+  public boolean equals(final Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    BlobId blobId = (BlobId) o;
+
+    if (id != null ? !id.equals(blobId.id) : blobId.id != null) {
+      return false;
+    }
+
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    return id != null ? id.hashCode() : 0;
+  }
 }

@@ -29,6 +29,8 @@
 
   <modules>
     <module>base-configuration</module>
+    <module>nexus-blob-store-api</module>
+    <module>nexus-blob-store-file</module>
     <module>nexus-bootstrap</module>
     <module>nexus-client-core</module>
     <module>nexus-configuration-model</module>
@@ -47,7 +49,6 @@
     <module>nexus-security</module>
     <module>nexus-security-realms</module>
     <module>nexus-webapp</module>
-    <module>nexus-blob-store</module>
   </modules>
 
   <dependencyManagement>

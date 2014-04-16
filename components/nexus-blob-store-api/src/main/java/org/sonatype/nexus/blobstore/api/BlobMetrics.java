@@ -17,33 +17,29 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- *
  * @since 3.0
  */
 public interface BlobMetrics
 {
   Date getCreationTime();
 
-  Date getLastAccessTime();
+  /**
+   * A SHA1 hash of the content bytes (not the headers).
+   */
+  String getSHA1Hash();
 
   /**
-   * <p>Various blob store-calculated hashes of the blob (not the header), with the hash algorithm as key.</p>
-   *
-   * <p><code>metrics.getHashes("SHA1");</code></p>
+   * The length, in bytes, of the headers.  This ignores storage considerations like block size.
    */
-  Map<String,String> getHashes();
-
-  long getHeaderSizeInBytes();
+  long getHeaderSize();
 
   /**
-   *
+   * The byte length of the raw content blob, excluding storage considerations like block size.
    */
-  long getBlobSizeInBytes();
+  long getContentSize();
 
   /**
-   * An estimate of the blob's total consumption of storage space, including
+   * The length of the header plus content, in bytes.
    */
-  long getBlobStorageSizeInBytes();
-
-  long numberOfAccesses();
+  long getTotalSize();
 }
