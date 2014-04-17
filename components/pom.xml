@@ -29,8 +29,10 @@
 
   <modules>
     <module>base-configuration</module>
-    <module>nexus-blob-store-api</module>
-    <module>nexus-blob-store-file</module>
+    <module>nexus-blobstore-api</module>
+    <module>nexus-blobstore-file</module>
+    <module>nexus-blobstore-mirror</module>
+    <module>nexus-blobstore-support</module>
     <module>nexus-bootstrap</module>
     <module>nexus-client-core</module>
     <module>nexus-configuration-model</module>
