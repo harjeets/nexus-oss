@@ -18,6 +18,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * A null implementation that returns do-nothing locks and never causes threads to wait.
+ *
  * @since 3.0
  */
 public class DummyLockProvider
