@@ -83,10 +83,12 @@ public class FileBlobStore
       // Maybe write out a 'remove' order that gets deleted at the end of this method?
       // When the blob store starts, any outstanding remove orders trigger file deletions.
 
-      // write the content to disk
-      fileOperations.create(contentPath(blobId), inputStream);
+      logger.debug("Writing blob {} to {}", blobId, contentPath(blobId));
+
       // write the headers to disk
       fileOperations.create(headerPath(blobId), toInputStream(headers));
+      // write the content to disk
+      fileOperations.create(contentPath(blobId), inputStream);
 
       final FileBlob blob = new FileBlob(blobId, contentPath(blobId), headerPath(blobId));
       if (listener != null) {
@@ -108,9 +110,11 @@ public class FileBlobStore
     try (final BlobLock lock = lockProvider.readLock(blobId)) {
 
       if (!fileOperations.exists(contentPath(blobId))) {
+        logger.debug("Attempt to access non-existent blob {}", blobId);
         return null;
       }
 
+      logger.debug("Accessing blob {}", blobId);
       final FileBlob blob = new FileBlob(blobId, contentPath(blobId), headerPath(blobId));
       if (listener != null) {
         listener.blobAccessed(blob, null);
@@ -131,6 +135,8 @@ public class FileBlobStore
       if (delBlob != delHeader) {
         logger.error("Deleting blob {} : {} file was missing.", blobId, !delBlob ? "content" : "header");
       }
+
+      logger.debug("Deleting blob {}", blobId);
 
       if (listener != null) {
         listener.blobDeleted(blobId, "Path:" + contentPath(blobId).toAbsolutePath());

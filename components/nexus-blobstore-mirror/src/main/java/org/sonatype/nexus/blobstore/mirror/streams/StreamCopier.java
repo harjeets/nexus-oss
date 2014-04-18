@@ -10,22 +10,22 @@
  * of Sonatype, Inc. Apache Maven is a trademark of the Apache Software Foundation. M2eclipse is a trademark of the
  * Eclipse Foundation. All other trademarks are the property of their respective owners.
  */
-package org.sonatype.nexus.blobstore.api;
+package org.sonatype.nexus.blobstore.mirror.streams;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
+ * A utility for splitting an input stream into two separate streams, the original and an identical copy.
+ *
  * @since 3.0
  */
-public class BlobStoreException extends RuntimeException
+public interface StreamCopier
 {
-  public BlobStoreException(final String message) {
-    super(message);
-  }
+  InputStream getOriginalStream();
 
-  public BlobStoreException(final String message, final Throwable cause) {
-    super(message, cause);
-  }
-
-  public BlobStoreException(final Throwable cause) {
-    super(cause);
-  }
+  /**
+   * Don't call this before the original stream has been closed.
+   */
+  InputStream getCopiedStream() throws IOException;
 }

@@ -23,21 +23,25 @@
     <version>3.0.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>nexus-blob-store-mirror</artifactId>
+  <artifactId>nexus-blobstore-mirror</artifactId>
   <name>${project.groupId}:${project.artifactId}</name>
 
   <dependencies>
     <dependency>
       <groupId>org.sonatype.nexus</groupId>
-      <artifactId>nexus-blob-store-api</artifactId>
-      <version>3.0.0-SNAPSHOT</version>
+      <artifactId>nexus-blobstore-api</artifactId>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.sonatype.nexus</groupId>
-      <artifactId>nexus-blob-store-file</artifactId>
-      <version>3.0.0-SNAPSHOT</version>
+      <artifactId>nexus-blobstore-file</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.sonatype.nexus</groupId>
+      <artifactId>nexus-blobstore-support</artifactId>
       <scope>provided</scope>
     </dependency>
 

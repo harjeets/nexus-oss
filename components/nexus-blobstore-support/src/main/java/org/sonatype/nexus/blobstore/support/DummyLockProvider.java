@@ -42,7 +42,7 @@ public class DummyLockProvider
     {
       @Override
       public void close() {
-        logger.debug("Closing dummy lock for blob " + blobId);
+        logger.debug("Closing dummy lock for blob {}", blobId);
       }
     };
   }

@@ -10,22 +10,26 @@
  * of Sonatype, Inc. Apache Maven is a trademark of the Apache Software Foundation. M2eclipse is a trademark of the
  * Eclipse Foundation. All other trademarks are the property of their respective owners.
  */
-package org.sonatype.nexus.blobstore.api;
+package org.sonatype.nexus.blobstore.mirror.streams;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
+ * A byte buffer for holding data for short periods of time, accessed through streams.
+ *
  * @since 3.0
  */
-public class BlobStoreException extends RuntimeException
+public interface Spool
 {
-  public BlobStoreException(final String message) {
-    super(message);
-  }
+  /**
+   * Call this method only once.
+   */
+  OutputStream createOutputStream() throws IOException;
 
-  public BlobStoreException(final String message, final Throwable cause) {
-    super(message, cause);
-  }
-
-  public BlobStoreException(final Throwable cause) {
-    super(cause);
-  }
+  /**
+   * Call this method only once.
+   */
+  InputStream createInputStream() throws IOException;
 }

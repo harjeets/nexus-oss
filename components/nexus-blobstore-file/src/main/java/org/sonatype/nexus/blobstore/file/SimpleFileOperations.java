@@ -78,14 +78,7 @@ public class SimpleFileOperations
 
   @Override
   public boolean delete(final Path path) throws IOException {
-    try {
-      Files.delete(path);
-      return true;
-    }
-    catch (NoSuchFileException e) {
-      logger.trace("Unable to delete; file not found: {}", path, e);
-      return false;
-    }
+      return Files.deleteIfExists(path);
   }
 
   @Override

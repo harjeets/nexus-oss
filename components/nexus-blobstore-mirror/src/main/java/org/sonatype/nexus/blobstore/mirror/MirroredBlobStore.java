@@ -12,7 +12,9 @@
  */
 package org.sonatype.nexus.blobstore.mirror;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Nullable;
@@ -20,21 +22,37 @@ import javax.annotation.Nullable;
 import org.sonatype.nexus.blobstore.api.Blob;
 import org.sonatype.nexus.blobstore.api.BlobId;
 import org.sonatype.nexus.blobstore.api.BlobStore;
+import org.sonatype.nexus.blobstore.api.BlobStoreException;
 import org.sonatype.nexus.blobstore.api.BlobStoreMetrics;
+import org.sonatype.nexus.blobstore.mirror.streams.SpoolingStreamCopier;
+import org.sonatype.nexus.blobstore.mirror.streams.StreamCopier;
+import org.sonatype.nexus.blobstore.mirror.streams.TempFileSpool;
+import org.sonatype.nexus.blobstore.support.BlobLockProvider;
 
 import com.google.common.base.Preconditions;
 
 /**
- * A blob store that reads and writes from a primary store, while mirroring writes to a backing store.
+ * A blob store that reads and writes from a primary store, while mirroring writes to a backing store. The blobs in the
+ * primary store have an additional header that indicates the BlobId of the blob in the mirror store.  The assumption
+ * is that the mirrored store is more durable than the primary store.
+ *
+ * NOTE: This is a prototype, and will consume gobs of memory if large blobs are sent in.
  *
  * @since 3.0
  */
-public class MirroredBlobStore implements BlobStore
+public class MirroredBlobStore
+    implements BlobStore
 {
+  private final String blobStoreId;
+
   private BlobStore primaryStore;
+
   private BlobStore mirrorStore;
 
-  public MirroredBlobStore(final BlobStore primaryStore, final BlobStore mirrorStore) {
+  private BlobLockProvider lockProvider;
+
+  public MirroredBlobStore(final String blobStoreId, final BlobStore primaryStore, final BlobStore mirrorStore) {
+    this.blobStoreId = blobStoreId;
     Preconditions.checkNotNull(primaryStore);
     Preconditions.checkNotNull(mirrorStore);
     this.primaryStore = primaryStore;
@@ -43,22 +61,46 @@ public class MirroredBlobStore implements BlobStore
 
   @Override
   public Blob create(final InputStream inputStream, final Map<String, String> headers) {
-    return null;
+    try {
+      final StreamCopier copier = new SpoolingStreamCopier(inputStream, new TempFileSpool());
+
+      final Blob mirroredBlob = mirrorStore.create(copier.getOriginalStream(), headers);
+
+      final HashMap<String, String> primaryHeaders = new HashMap<>(headers);
+      primaryHeaders.put(getSecondaryBlobIdKey(), mirroredBlob.getId().toString());
+
+      return primaryStore.create(copier.getCopiedStream(), primaryHeaders);
+    }
+    catch (IOException e) {
+      throw new BlobStoreException(e);
+    }
   }
 
   @Nullable
   @Override
   public Blob get(final BlobId blobId) {
-    return null;
+    return primaryStore.get(blobId);
   }
 
   @Override
   public boolean delete(final BlobId blobId) {
-    return false;
+    final Blob blob = primaryStore.get(blobId);
+
+    final String mirrorBlobId = blob.getHeaders().get(getSecondaryBlobIdKey());
+    primaryStore.delete(blobId);
+    return mirrorStore.delete(new BlobId(mirrorBlobId));
+  }
+
+  private String getSecondaryBlobIdKey() {
+    return "blobId-in-store:" + blobStoreId;
   }
 
   @Override
   public BlobStoreMetrics getMetrics() {
-    return null;
+    return primaryStore.getMetrics();
+  }
+
+  public void setLockProvider(final BlobLockProvider lockProvider) {
+    this.lockProvider = lockProvider;
   }
 }

@@ -16,7 +16,7 @@ import com.google.common.base.Preconditions;
 
 public final class BlobId
 {
-  final private String id;
+  private final String id;
 
   public BlobId(final String id) {
     Preconditions.checkNotNull(id);
