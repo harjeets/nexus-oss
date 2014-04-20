@@ -28,7 +28,7 @@
   <packaging>pom</packaging>
 
   <properties>
-    <eclipse-sisu.version>0.2.0</eclipse-sisu.version>
+    <eclipse-sisu.version>0.2.1-SNAPSHOT</eclipse-sisu.version>
     <sisu-guice.version>3.2.0</sisu-guice.version>
   </properties>
 
